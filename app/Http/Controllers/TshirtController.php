@@ -14,7 +14,9 @@ class TshirtController extends Controller
      */
     public function index()
     {
-        //
+        $tShirts = Tshirt::all();
+
+        return view("tshirts.index")->with('tShirts', $tShirts);
     }
 
     /**
@@ -24,7 +26,7 @@ class TshirtController extends Controller
      */
     public function create()
     {
-        //
+        return view("tshirts.create");
     }
 
     /**
@@ -35,7 +37,19 @@ class TshirtController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tShirt = new Tshirt();
+        $tShirt->name = $request->input('name');
+        $tShirt->description = $request->input('description');
+        $tShirt->img_url = $request->input('img_url');
+
+        $tShirt->size_s = $request->input('size_s');
+        $tShirt->size_m = $request->input('size_m');
+        $tShirt->size_l = $request->input('size_l');
+        $tShirt->size_xl = $request->input('size_xl');
+
+        $tShirt->save();
+
+        return redirect('t-shirts');
     }
 
     /**
@@ -78,8 +92,10 @@ class TshirtController extends Controller
      * @param  \App\Tshirt  $tshirt
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tshirt $tshirt)
+    public function destroy($id)
     {
-        //
+        $tShirt = Tshirt::where('_id', $id)->first();
+        $tShirt->delete();
+        return redirect('t-shirts');
     }
 }
