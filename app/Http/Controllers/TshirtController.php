@@ -40,6 +40,7 @@ class TshirtController extends Controller
         $tShirt = new Tshirt();
         $tShirt->name = $request->input('name');
         $tShirt->description = $request->input('description');
+        $tShirt->ref_id = $request->input('ref_id');
         $tShirt->img_url = $request->input('img_url');
 
         $tShirt->size_s = $request->input('size_s');
@@ -49,7 +50,7 @@ class TshirtController extends Controller
 
         $tShirt->save();
 
-        return redirect('t-shirts');
+        return redirect('dashboard/t-shirts');
     }
 
     /**
@@ -69,9 +70,11 @@ class TshirtController extends Controller
      * @param  \App\Tshirt  $tshirt
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tshirt $tshirt)
+    public function edit($id)
     {
-        //
+        $tShirt = Tshirt::where('ref_id', $id)->first();
+
+        return view('tshirts/edit')->with('tShirt', $tShirt);
     }
 
     /**
@@ -96,6 +99,6 @@ class TshirtController extends Controller
     {
         $tShirt = Tshirt::where('_id', $id)->first();
         $tShirt->delete();
-        return redirect('t-shirts');
+        return redirect('dashboard/t-shirts');
     }
 }

@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('t-shirts', 'TshirtController');
+Route::resource('/dashboard/t-shirts', 'TshirtController');

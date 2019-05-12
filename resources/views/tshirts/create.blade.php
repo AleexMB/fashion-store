@@ -24,7 +24,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                {{ Form::open( array('url' => 't-shirts', 'files' => true) ) }}
+                {{ Form::open( array('url' => 'dashboard/t-shirts', 'files' => true) ) }}
 
                     <div class="form-group">
                         {{ Form::label('name', 'Product name') }}
@@ -34,6 +34,11 @@
                     <div class="form-group">
                         {{ Form::label('description', 'Product description') }}
                         {{ Form::text('description', null, array('class' => 'form-control')) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('ref_id', 'Product ref_id') }}
+                        {{ Form::text('ref_id', null, array('class' => 'form-control')) }}
                     </div>
 
                     <div class="form-group">
