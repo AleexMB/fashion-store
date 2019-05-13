@@ -20,7 +20,7 @@ class CoatController extends Controller
 
     public function index()
     {
-        $coats = Coat::all();
+        $coats = Coat::orderBy('created_at', 'desc')->get();
 
         return view("coats.index")->with('coats', $coats);
     }

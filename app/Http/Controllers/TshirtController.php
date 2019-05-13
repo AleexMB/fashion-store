@@ -20,7 +20,7 @@ class TshirtController extends Controller
 
     public function index()
     {
-        $tShirts = Tshirt::all();
+        $tShirts = Tshirt::orderBy('created_at', 'desc')->get();
 
         return view("tshirts.index")->with('tShirts', $tShirts);
     }

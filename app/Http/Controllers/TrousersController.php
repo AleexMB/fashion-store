@@ -20,7 +20,7 @@ class TrousersController extends Controller
 
     public function index()
     {
-        $trousers = Trousers::all();
+        $trousers = Trousers::orderBy('created_at', 'desc')->get();
 
         return view("trousers.index")->with('trousers', $trousers);
     }
