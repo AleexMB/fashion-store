@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Edit T-shirt | FashionStore</title>
+    <title>New Coat | FashionStore</title>
 
     <meta name="description" content="Assignment made by Alessandro Picci for 21iLAB">
 
@@ -32,17 +32,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <a href="/dashboard/t-shirts" class="selected">Back to T-shirts</a>
+                    <a href="/dashboard/coats" class="selected">Back to Coats</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h1>Edit the T-shirt</h1>
+                    <h1>Add a new Coat</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    {{ Form::model($tShirt, array('route' => array('t-shirts.update', $tShirt->ref_id), 'method' => 'PUT', 'files' => true)) }}
+                    {{ Form::open( array('url' => 'dashboard/coats', 'files' => true) ) }}
                     <div class="row">
                         <div class="col-12">
                             <h3>Info</h3>
@@ -90,31 +90,31 @@
                         <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_s', 'S size') }}
-                                {{ Form::text('size_s', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_s', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
                         <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_m', 'M size') }}
-                                {{ Form::text('size_m', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_m', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
                         <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_l', 'L size') }}
-                                {{ Form::text('size_l', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_l', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
                         <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_xl', 'XL size') }}
-                                {{ Form::text('size_xl', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_xl', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
-                                
+
                         <div class="col-12">
                             {{ Form::submit('Save', array('class' => 'create_btn')) }}
                         </div>

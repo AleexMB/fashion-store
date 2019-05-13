@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Edit T-shirt | FashionStore</title>
+    <title>Edit Trousers | FashionStore</title>
 
     <meta name="description" content="Assignment made by Alessandro Picci for 21iLAB">
 
@@ -32,17 +32,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <a href="/dashboard/t-shirts" class="selected">Back to T-shirts</a>
+                    <a href="/dashboard/trousers" class="selected">Back to Trousers</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <h1>Edit the T-shirt</h1>
+                    <h1>Edit the Trousers</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    {{ Form::model($tShirt, array('route' => array('t-shirts.update', $tShirt->ref_id), 'method' => 'PUT', 'files' => true)) }}
+                    {{ Form::model($trousers, array('route' => array('trousers.update', $trousers->ref_id), 'method' => 'PUT', 'files' => true)) }}
                     <div class="row">
                         <div class="col-12">
                             <h3>Info</h3>

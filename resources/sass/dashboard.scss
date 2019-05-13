@@ -16,6 +16,50 @@ nav {
     }
 }
 
+#dashboard {
+    margin-top: 16vh;
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 4vh;
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: 280px;
+    }
+
+    h2 {
+        position: absolute;
+        bottom: 30px;
+        color: #fff;
+        font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+        margin-left: 10px;
+        z-index: 10;
+    }
+
+    .layer {
+        background-color: rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .category_card {
+        margin-bottom: 30px;
+    }
+}
+
 #dashboard_main {
     margin-top: 16vh;
 
@@ -270,6 +314,18 @@ nav {
                     color: red;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    #dashboard_detail {
+        img {
+            margin-bottom: 40px;
+        }
+
+        .actions {
+            position: relative;
         }
     }
 }

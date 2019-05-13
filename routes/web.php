@@ -19,10 +19,22 @@ Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/dashboard', 'HomeController@dashboard');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/dashboard/t-shirts', 'TshirtController');
 
+Route::resource('/dashboard/trousers', 'TrousersController');
+
+Route::resource('/dashboard/coats', 'CoatController');
+
+
+
 Route::get('/dashboard/t-shirts/{ref_id}/show', 'TshirtController@show');
+
+Route::get('/dashboard/trousers/{ref_id}/show', 'TrousersController@show');
+
+Route::get('/dashboard/coats/{ref_id}/show', 'CoatController@show');

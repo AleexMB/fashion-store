@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>FashionStore</title>
+    <title>Login | FashionStore</title>
+
+    <meta name="description" content="Assignment made by Alessandro Picci for 21iLAB">
 
     <!-- Scripts -->
 
@@ -42,7 +44,7 @@
                 @csrf
 
                 <div class="row">
-                    <div class="col-sm-6 col-8 offset-sm-3 offset-2">
+                    <div class="col-sm-8 col-md-6 col-10 offset-md-3 offset-sm-2 offset-1">
 
                         <div class="card_login">
 

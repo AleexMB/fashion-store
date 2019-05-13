@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tshirt;
+use App\Coat;
 use Illuminate\Http\Request;
 
-class TshirtController extends Controller
+class CoatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class TshirtController extends Controller
 
     public function index()
     {
-        $tShirts = Tshirt::all();
+        $coats = Coat::all();
 
-        return view("tshirts.index")->with('tShirts', $tShirts);
+        return view("coats.index")->with('coats', $coats);
     }
 
     /**
@@ -32,7 +32,7 @@ class TshirtController extends Controller
      */
     public function create()
     {
-        return view("tshirts.create");
+        return view("coats.create");
     }
 
     /**
@@ -47,88 +47,87 @@ class TshirtController extends Controller
             'img' => 'mimes:jpeg,jpg,png',
             'name' => 'required|max:70',
             'description' => 'max:600',
-            'ref_id' => 'required|unique:tshirts|max:12',
+            'ref_id' => 'required|unique:coats|max:12',
             'size_s' => 'nullable|numeric',
             'size_m' => 'nullable|numeric',
             'size_l' => 'nullable|numeric',
             'size_xl' => 'nullable|numeric',
         ]);
 
-        $tShirt = new Tshirt();
-        $tShirt->name = $request->input('name');
-        $tShirt->description = $request->input('description');
-        $tShirt->ref_id = $request->input('ref_id');
-        //z$tShirt->img_url = $request->input('img_url');
+        $coat = new Coat();
+        $coat->name = $request->input('name');
+        $coat->description = $request->input('description');
+        $coat->ref_id = $request->input('ref_id');
 
         if ($request->input('size_s')) {
-            $tShirt->size_s = $request->input('size_s');
+            $coat->size_s = $request->input('size_s');
         } else {
-            $tShirt->size_s = 0;
+            $coat->size_s = 0;
         }
         
         if ($request->input('size_m')) {
-            $tShirt->size_m = $request->input('size_m');
+            $coat->size_m = $request->input('size_m');
         } else {
-            $tShirt->size_m = 0;
+            $coat->size_m = 0;
         }
 
         if ($request->input('size_l')) {
-            $tShirt->size_l = $request->input('size_l');
+            $coat->size_l = $request->input('size_l');
         } else {
-            $tShirt->size_l = 0;
+            $coat->size_l = 0;
         }
 
         if ($request->input('size_xl')) {
-            $tShirt->size_xl = $request->input('size_xl');
+            $coat->size_xl = $request->input('size_xl');
         } else {
-            $tShirt->size_xl = 0;
+            $coat->size_xl = 0;
         }
         
         if ($request->file('img')) {
             try {
-                $tShirt->img = time().'.'.$request->file('img')->getClientOriginalExtension();
-                $request->img->move(public_path('assets/tshirts/'), $tShirt->img);
+                $coat->img = time().'.'.$request->file('img')->getClientOriginalExtension();
+                $request->img->move(public_path('assets/coats/'), $coat->img);
             } catch (\Exception $e) {
                 //
             }
         }
 
-        $tShirt->save();
+        $coat->save();
 
-        return redirect('dashboard/t-shirts');
+        return redirect('dashboard/coats');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tshirt  $tshirt
+     * @param  \App\Coat  $coat
      * @return \Illuminate\Http\Response
      */
     public function show($ref_id)
     {
-        $tShirt = Tshirt::where('ref_id', $ref_id)->first();
+        $coat = Coat::where('ref_id', $ref_id)->first();
 
-        return view('tshirts/show')->with('tShirt', $tShirt);
+        return view('coats/show')->with('coat', $coat);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tshirt  $tshirt
+     * @param  \App\Coat  $coat
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $tShirt = Tshirt::where('ref_id', $id)->first();
+        $coat = Coat::where('ref_id', $id)->first();
 
-        return view('tshirts/edit')->with('tShirt', $tShirt);
+        return view('coats/edit')->with('coat', $coat);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tshirt  $tshirt
+     * @param  \App\Coat  $coats
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $ref_id)
@@ -137,67 +136,66 @@ class TshirtController extends Controller
             'img' => 'mimes:jpeg,jpg,png',
             'name' => 'required|max:70',
             'description' => 'max:600',
-            'ref_id' => 'required|unique:tshirts->ignore($ref_id)|max:12',
+            'ref_id' => 'required|unique:coats->ignore($ref_id)|max:12',
             'size_s' => 'nullable|numeric',
             'size_m' => 'nullable|numeric',
             'size_l' => 'nullable|numeric',
             'size_xl' => 'nullable|numeric',
         ]);
 
-        $tShirt = Tshirt::where('ref_id', $ref_id)->first();
-        $tShirt->name = $request->input('name');
-        $tShirt->description = $request->input('description');
-        $tShirt->ref_id = $request->input('ref_id');
-        //z$tShirt->img_url = $request->input('img_url');
+        $coat = Coat::where('ref_id', $ref_id)->first();
+        $coat->name = $request->input('name');
+        $coat->description = $request->input('description');
+        $coat->ref_id = $request->input('ref_id');
 
         if ($request->input('size_s')) {
-            $tShirt->size_s = $request->input('size_s');
+            $coat->size_s = $request->input('size_s');
         } else {
-            $tShirt->size_s = 0;
+            $coat->size_s = 0;
         }
         
         if ($request->input('size_m')) {
-            $tShirt->size_m = $request->input('size_m');
+            $coat->size_m = $request->input('size_m');
         } else {
-            $tShirt->size_m = 0;
+            $coat->size_m = 0;
         }
 
         if ($request->input('size_l')) {
-            $tShirt->size_l = $request->input('size_l');
+            $coat->size_l = $request->input('size_l');
         } else {
-            $tShirt->size_l = 0;
+            $coat->size_l = 0;
         }
 
         if ($request->input('size_xl')) {
-            $tShirt->size_xl = $request->input('size_xl');
+            $coat->size_xl = $request->input('size_xl');
         } else {
-            $tShirt->size_xl = 0;
+            $coat->size_xl = 0;
         }
 
         if ($request->file('img')) {
             try {
-                $tShirt->img = time().'.'.$request->file('img')->getClientOriginalExtension();
-                $request->img->move(public_path('assets/tshirts/'), $tShirt->img);
+                $coat->img = time().'.'.$request->file('img')->getClientOriginalExtension();
+                $request->img->move(public_path('assets/coats/'), $coat->img);
             } catch (\Exception $e) {
                 //
             }
         }
 
-        $tShirt->save();
+        $coat->save();
 
-        return redirect('dashboard/t-shirts');
+        return redirect('dashboard/coats');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tshirt  $tshirt
+     * @param  \App\Coat  $coat
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $tShirt = Tshirt::where('_id', $id)->first();
-        $tShirt->delete();
-        return redirect('dashboard/t-shirts');
+        $coat = Coat::where('_id', $id)->first();
+        $coat->delete();
+        return redirect('dashboard/coats');
     }
 }

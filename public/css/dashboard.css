@@ -15,6 +15,51 @@ nav a:hover {
   color: #333;
 }
 
+#dashboard {
+  margin-top: 16vh;
+}
+
+#dashboard a {
+  text-decoration: none;
+}
+
+#dashboard h1 {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4vh;
+}
+
+#dashboard img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 280px;
+}
+
+#dashboard h2 {
+  position: absolute;
+  bottom: 30px;
+  color: #fff;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  margin-left: 10px;
+  z-index: 10;
+}
+
+#dashboard .layer {
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#dashboard .category_card {
+  margin-bottom: 30px;
+}
+
 #dashboard_main {
   margin-top: 16vh;
 }
@@ -259,5 +304,15 @@ nav a:hover {
 
 #dashboard_detail .actions .delete .dashboard_action:hover {
   color: red;
+}
+
+@media (max-width: 767px) {
+  #dashboard_detail img {
+    margin-bottom: 40px;
+  }
+
+  #dashboard_detail .actions {
+    position: relative;
+  }
 }
 

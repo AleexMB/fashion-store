@@ -2,12 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>FashionStore</title>
+    <title>New T-shirt | FashionStore</title>
+
+    <meta name="description" content="Assignment made by Alessandro Picci for 21iLAB">
 
     <!-- Scripts -->
 
@@ -23,19 +26,7 @@
 </head>
 <body>
 
-    <nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <a href="/">Dashboard</a>
-                </div>
-
-                <div class="col-6 text-right">
-                    <a href="/">Log out</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    @include('includes.navbar')
 
     <section id="dashboard_create">
         <div class="container">
@@ -56,28 +47,28 @@
                         <div class="col-12">
                             <h3>Info</h3>
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 {{ Form::label('name', 'Product name *') }}
                                 {{ Form::text('name', null, array('class' => 'form-control')) }}
                             </div>
                         </div>
 
-                        <div class="col-6">
+                        <div class="col-sm-6 col-12">
                             <div class="form-group">
                                 {{ Form::label('ref_id', 'Product ref id * (must be unique)') }}
                                 {{ Form::text('ref_id', null, array('class' => 'form-control')) }}
                             </div>
                         </div>
 
-                        <div class="col-8">
+                        <div class="col-sm-8 col-12">
                             <div class="form-group">
                                 {{ Form::label('description', 'Product description') }}
                                 {{ Form::textarea('description', null, array('class' => 'form-control')) }}
                             </div>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-sm-12 col-md-4 col-12">
                             <div class="form-group">
                                 {{ Form::label('img', 'Product image') }}
                                 <br/>
@@ -96,31 +87,31 @@
                         <div class="col-12">
                             <h3>Quantity in stock</h3>
                         </div>
-                        <div class="col-3">
+                        <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_s', 'S size') }}
-                                {{ Form::text('size_s', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_s', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_m', 'M size') }}
-                                {{ Form::text('size_m', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_m', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_l', 'L size') }}
-                                {{ Form::text('size_l', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_l', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-sm-3 col-6">
                             <div class="form-group">
                                 {{ Form::label('size_xl', 'XL size') }}
-                                {{ Form::text('size_xl', null, array('class' => 'form-control')) }}
+                                {{ Form::text('size_xl', null, array('class' => 'form-control', 'placeholder' => 0)) }}
                             </div>
                         </div>
 
@@ -142,5 +133,6 @@
     @include('includes.footer')
 
     <script src="/js/app.js"></script>
+    <script src="/js/dashboard.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Manage T-shirts | FashionStore</title>
+    <title>Manage Coats | FashionStore</title>
 
     <meta name="description" content="Assignment made by Alessandro Picci for 21iLAB">
 
@@ -31,14 +31,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <a href="/dashboard/t-shirts" class="selected">T-shirts</a> | 
+                        <a href="/dashboard/t-shirts">T-shirts</a> | 
                         <a href="/dashboard/trousers">Trousers</a> | 
-                        <a href="/dashboard/coats">Coats</a>
+                        <a href="/dashboard/coats" class="selected">Coats</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <h1>Manage T-shirts</h1>
+                        <h1>Manage Coats</h1>
                     </div>
                 </div>
             </div>
@@ -48,35 +48,35 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-xl-3 col-sm-6 col-10 offset-1 offset-sm-0">
-                        <a href="/dashboard/t-shirts/create">
+                        <a href="/dashboard/coats/create">
                             <div class="dashboard_card new">
                                 <img src="/images/plus.jpg" />
                                 <div class="info">
-                                    <h3>Add a new T-shirt</h3>
+                                    <h3>Add a new Coat</h3>
                                 </div>
                             </div>
                         </a>
                     </div>
 
-                    @foreach ($tShirts as $tShirt)
+                    @foreach ($coats as $coat)
                         <div class="col-lg-4 col-xl-3 col-sm-6 col-10 offset-1 offset-sm-0">
                             <div class="dashboard_card">
-                                <img src="/assets/tshirts/{{$tShirt->img}}" title="{{$tShirt->name}}" alt="{{$tShirt->description}}" />
+                                <img src="/assets/coats/{{$coat->img}}" title="{{$coat->name}}" alt="{{$coat->description}}" />
                                 <div class="info">
-                                    <h3>{{$tShirt->name}}</h3>
-                                    <h4>ref {{$tShirt->ref_id}}</h4>
+                                    <h3>{{$coat->name}}</h3>
+                                    <h4>ref {{$coat->ref_id}}</h4>
 
-                                    <h6>S: <span>{{$tShirt->size_s}}</span></h6>
-                                    <h6>M: <span>{{$tShirt->size_m}}</span></h6>
-                                    <h6>L: <span>{{$tShirt->size_l}}</span></h6>
-                                    <h6>XL: <span>{{$tShirt->size_xl}}</span></h6>
+                                    <h6>S: <span>{{$coat->size_s}}</span></h6>
+                                    <h6>M: <span>{{$coat->size_m}}</span></h6>
+                                    <h6>L: <span>{{$coat->size_l}}</span></h6>
+                                    <h6>XL: <span>{{$coat->size_xl}}</span></h6>
 
                                     <div class="actions">
-                                        <a class="dashboard_action" href="{{ URL::to('dashboard/t-shirts/' . $tShirt->ref_id . '/show') }}">Detail</a>
+                                        <a class="dashboard_action" href="{{ URL::to('dashboard/coats/' . $coat->ref_id . '/show') }}">Detail</a>
 
-                                        <a class="dashboard_action" href="{{ URL::to('dashboard/t-shirts/' . $tShirt->ref_id . '/edit') }}">Edit</a>
+                                        <a class="dashboard_action" href="{{ URL::to('dashboard/coats/' . $coat->ref_id . '/edit') }}">Edit</a>
                                         
-                                        {{ Form::open(array('url' => 'dashboard/t-shirts/' . $tShirt->_id, 'class' => 'delete')) }}
+                                        {{ Form::open(array('url' => 'dashboard/coats/' . $coat->_id, 'class' => 'delete')) }}
                                             {{ Form::hidden('_method', 'DELETE') }}
                                             {{ Form::submit('Delete', array('class' => 'dashboard_action')) }}
                                         {{ Form::close() }}
