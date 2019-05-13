@@ -12,6 +12,12 @@ class TshirtController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $tShirts = Tshirt::all();
@@ -37,16 +43,51 @@ class TshirtController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'img' => 'mimes:jpeg,jpg,png',
+            'name' => 'required|max:70',
+            'description' => 'max:600',
+            'ref_id' => 'required|unique:tshirts|max:12',
+        ]);
+
         $tShirt = new Tshirt();
         $tShirt->name = $request->input('name');
         $tShirt->description = $request->input('description');
         $tShirt->ref_id = $request->input('ref_id');
-        $tShirt->img_url = $request->input('img_url');
+        //z$tShirt->img_url = $request->input('img_url');
 
-        $tShirt->size_s = $request->input('size_s');
-        $tShirt->size_m = $request->input('size_m');
-        $tShirt->size_l = $request->input('size_l');
-        $tShirt->size_xl = $request->input('size_xl');
+        if ($request->input('size_s')) {
+            $tShirt->size_s = $request->input('size_s');
+        } else {
+            $tShirt->size_s = 0;
+        }
+        
+        if ($request->input('size_m')) {
+            $tShirt->size_m = $request->input('size_m');
+        } else {
+            $tShirt->size_m = 0;
+        }
+
+        if ($request->input('size_l')) {
+            $tShirt->size_l = $request->input('size_l');
+        } else {
+            $tShirt->size_l = 0;
+        }
+
+        if ($request->input('size_xl')) {
+            $tShirt->size_xl = $request->input('size_xl');
+        } else {
+            $tShirt->size_xl = 0;
+        }
+        
+        if ($request->file('img')) {
+            try {
+                $tShirt->img = time().'.'.$request->file('img')->getClientOriginalExtension();
+                $request->img->move(public_path('assets/tshirts/'), $tShirt->img);
+            } catch (\Exception $e) {
+                //
+            }
+        }
 
         $tShirt->save();
 
@@ -59,9 +100,11 @@ class TshirtController extends Controller
      * @param  \App\Tshirt  $tshirt
      * @return \Illuminate\Http\Response
      */
-    public function show(Tshirt $tshirt)
+    public function show($ref_id)
     {
-        //
+        $tShirt = Tshirt::where('ref_id', $ref_id)->first();
+
+        return view('tshirts/show')->with('tShirt', $tShirt);
     }
 
     /**
@@ -84,9 +127,57 @@ class TshirtController extends Controller
      * @param  \App\Tshirt  $tshirt
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tshirt $tshirt)
+    public function update(Request $request, $ref_id)
     {
-        //
+        $request->validate([
+            'img' => 'mimes:jpeg,jpg,png',
+            'name' => 'required|max:70',
+            'description' => 'max:600',
+            'ref_id' => 'required|unique:tshirts->ignore($ref_id)|max:12',
+        ]);
+
+        $tShirt = Tshirt::where('ref_id', $ref_id)->first();
+        $tShirt->name = $request->input('name');
+        $tShirt->description = $request->input('description');
+        $tShirt->ref_id = $request->input('ref_id');
+        //z$tShirt->img_url = $request->input('img_url');
+
+        if ($request->input('size_s')) {
+            $tShirt->size_s = $request->input('size_s');
+        } else {
+            $tShirt->size_s = 0;
+        }
+        
+        if ($request->input('size_m')) {
+            $tShirt->size_m = $request->input('size_m');
+        } else {
+            $tShirt->size_m = 0;
+        }
+
+        if ($request->input('size_l')) {
+            $tShirt->size_l = $request->input('size_l');
+        } else {
+            $tShirt->size_l = 0;
+        }
+
+        if ($request->input('size_xl')) {
+            $tShirt->size_xl = $request->input('size_xl');
+        } else {
+            $tShirt->size_xl = 0;
+        }
+
+        if ($request->file('img')) {
+            try {
+                $tShirt->img = time().'.'.$request->file('img')->getClientOriginalExtension();
+                $request->img->move(public_path('assets/tshirts/'), $tShirt->img);
+            } catch (\Exception $e) {
+                //
+            }
+        }
+
+        $tShirt->save();
+
+        return redirect('dashboard/t-shirts');
     }
 
     /**

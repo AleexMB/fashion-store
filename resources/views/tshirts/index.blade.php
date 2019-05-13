@@ -70,7 +70,7 @@
                     @foreach ($tShirts as $tShirt)
                         <div class="col-lg-4 col-xl-3 col-sm-6 col-6">
                             <div class="dashboard_card">
-                                <img src="{{$tShirt->img_url}}" title="{{$tShirt->name}}" alt="{{$tShirt->description}}" />
+                                <img src="/assets/tshirts/{{$tShirt->img}}" title="{{$tShirt->name}}" alt="{{$tShirt->description}}" />
                                 <div class="info">
                                     <h3>{{$tShirt->name}}</h3>
                                     <h4>ref {{$tShirt->ref_id}}</h4>
@@ -97,6 +97,8 @@
                 </div>
             </div>
         </section>
+
+        @include('includes.footer')
         
         <script src="../js/app.js"></script>
         <script src="../js/dashboard.js"></script>

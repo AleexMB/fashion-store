@@ -12,11 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return redirect('/dashboard');
+});
+
+Route::get('/home', function () {
+    return redirect('/dashboard');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/dashboard/t-shirts', 'TshirtController');
+
+Route::get('/dashboard/t-shirts/{ref_id}/show', 'TshirtController@show');

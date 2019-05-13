@@ -17,70 +17,130 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                {{ Form::open( array('url' => 'dashboard/t-shirts', 'files' => true) ) }}
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <a href="/">Dashboard</a>
+                </div>
 
-                    <div class="form-group">
-                        {{ Form::label('name', 'Product name') }}
-                        {{ Form::text('name', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('description', 'Product description') }}
-                        {{ Form::text('description', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('ref_id', 'Product ref_id') }}
-                        {{ Form::text('ref_id', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('img_url', 'Product img_url') }}
-                        {{ Form::text('img_url', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    {{-- SIZES --}}
-
-                    <div class="form-group">
-                        {{ Form::label('size_s', 'size_s') }}
-                        {{ Form::text('size_s', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('size_m', 'size_m') }}
-                        {{ Form::text('size_m', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('size_l', 'size_l') }}
-                        {{ Form::text('size_l', null, array('class' => 'form-control')) }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ Form::label('size_xl', 'size_xl') }}
-                        {{ Form::text('size_xl', null, array('class' => 'form-control')) }}
-                    </div>
-                        
-
-                    {{-- <div class="form-group">
-                        {{ Form::label('img_url', 'img_url') }}
-                        {{ Form::file('img_url') }}
-                    </div> --}}
-
-                    {{ Form::submit('Done', array('class' => 'btn btn-primary')) }}
-
-                {{ Form::close() }}
+                <div class="col-6 text-right">
+                    <a href="/">Log out</a>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <script src="../js/app.js"></script>
+    <section id="dashboard_create">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <a href="/dashboard/t-shirts" class="selected">Back to T-shirts</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Add a new T-shirt</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {{ Form::open( array('url' => 'dashboard/t-shirts', 'files' => true) ) }}
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Info</h3>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ Form::label('name', 'Product name *') }}
+                                {{ Form::text('name', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ Form::label('ref_id', 'Product ref id * (must be unique)') }}
+                                {{ Form::text('ref_id', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-8">
+                            <div class="form-group">
+                                {{ Form::label('description', 'Product description') }}
+                                {{ Form::textarea('description', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="form-group">
+                                {{ Form::label('img', 'Product image') }}
+                                <br/>
+                                {{ Form::file('img') }}
+                            </div>
+                        </div>
+
+                        {{-- <div class="col-12">
+                            <div class="form-group">
+                                {{ Form::label('img_url', 'Product img_url') }}
+                                {{ Form::text('img_url', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div> --}}
+
+                        {{-- SIZES --}}
+                        <div class="col-12">
+                            <h3>Quantity in stock</h3>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                {{ Form::label('size_s', 'S size') }}
+                                {{ Form::text('size_s', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                {{ Form::label('size_m', 'M size') }}
+                                {{ Form::text('size_m', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                {{ Form::label('size_l', 'L size') }}
+                                {{ Form::text('size_l', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <div class="form-group">
+                                {{ Form::label('size_xl', 'XL size') }}
+                                {{ Form::text('size_xl', null, array('class' => 'form-control')) }}
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            {{ Form::submit('Save', array('class' => 'create_btn')) }}
+                        </div>
+
+                        <div class="col-12">
+                            <h6>fields with a * are required</h6>
+                        </div>
+
+                        {{ Form::close() }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @include('includes.footer')
+
+    <script src="/js/app.js"></script>
 </body>
 </html>

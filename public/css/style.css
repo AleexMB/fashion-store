@@ -7,3 +7,29 @@ a {
   text-decoration: none !important;
 }
 
+footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-style: italic;
+  color: #d1d1d1;
+}
+
+.card_login {
+  margin-top: 30%;
+  background-color: #fafafa;
+  padding: 40px;
+}
+
+.card_login input {
+  border: 1px solid #e1e1e1;
+  border-radius: 0px;
+  margin-bottom: 30px;
+}
+
+.card_login .login_btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 4px 40px;
+}
+

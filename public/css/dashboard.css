@@ -23,6 +23,10 @@ nav a:hover {
   color: #999;
 }
 
+#dashboard_main a:hover {
+  color: #333;
+}
+
 #dashboard_main .selected {
   color: #333;
 }
@@ -34,6 +38,7 @@ nav a:hover {
 
 #dashboard_grid {
   margin-top: 2vh;
+  margin-bottom: 10vh;
 }
 
 #dashboard_grid .dashboard_card {
@@ -59,11 +64,15 @@ nav a:hover {
   margin-top: 4px;
   font-size: 20px;
   font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 #dashboard_grid .dashboard_card .info h4 {
   margin-top: 4px;
   font-size: 18px;
+  color: #818181;
 }
 
 #dashboard_grid .dashboard_card .info h5 {
@@ -116,5 +125,139 @@ nav a:hover {
 
 #dashboard_grid .new:hover {
   cursor: pointer;
+}
+
+#dashboard_create {
+  color: #333;
+  margin-top: 16vh;
+  margin-bottom: 10vh;
+}
+
+#dashboard_create a {
+  color: #999;
+}
+
+#dashboard_create a:hover {
+  color: #333;
+}
+
+#dashboard_create h1 {
+  font-weight: 700;
+  color: #333;
+}
+
+#dashboard_create h3 {
+  font-weight: 700;
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+#dashboard_create h6 {
+  font-style: italic;
+  margin-top: 12px;
+  color: #999;
+}
+
+#dashboard_create label {
+  font-weight: 700;
+}
+
+#dashboard_create form {
+  margin-top: 4vh;
+}
+
+#dashboard_create input,
+#dashboard_create textarea {
+  border: 1px solid #e1e1e1;
+  border-radius: 0px;
+  resize: none;
+}
+
+#dashboard_create .create_btn {
+  margin-top: 2vh;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 6px 22px;
+}
+
+#dashboard_detail {
+  margin-bottom: 10vh;
+  color: #333;
+  margin-top: 16vh;
+}
+
+#dashboard_detail a {
+  color: #999;
+}
+
+#dashboard_detail a:hover {
+  color: #333;
+}
+
+#dashboard_detail h1 {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4vh;
+}
+
+#dashboard_detail h4 {
+  margin-top: 4px;
+  font-size: 18px;
+  color: #818181;
+}
+
+#dashboard_detail p {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+#dashboard_detail h6 {
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+#dashboard_detail h6 span {
+  font-weight: bold;
+  color: #000;
+}
+
+#dashboard_detail img {
+  width: 100%;
+  height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#dashboard_detail .actions {
+  position: absolute;
+  bottom: 0px;
+  margin-top: 20px;
+}
+
+#dashboard_detail .actions .dashboard_action {
+  display: inline-block;
+  margin-right: 4px;
+  background-color: #333;
+  border: 0px;
+  color: #fff;
+  padding: 6px 12px;
+  text-decoration: none;
+  border: 1px solid #333;
+  transition: 0.4s;
+}
+
+#dashboard_detail .actions .dashboard_action:hover {
+  background-color: #fafafa;
+  color: #333;
+}
+
+#dashboard_detail .actions .delete {
+  display: inline-block;
+}
+
+#dashboard_detail .actions .delete .dashboard_action:hover {
+  color: red;
 }
 
